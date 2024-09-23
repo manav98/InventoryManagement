@@ -28,7 +28,7 @@ public class ProductService {
         product.setProductName("Electric Fan");
         product.setProductPrice(1200.0);
         product.setProductSerialNumber("123456dfghjgfvb");
-        product.setWarrantyRegistrationDate(LocalDate.now());
+        product.setWarrantyRegistrationDate(LocalDate.now().toString());
 
     }
 
@@ -40,7 +40,7 @@ public class ProductService {
         int columnCount = 0;
         Row row;
 
-        String filePath = "inventory.xlsx";
+        String filePath = "ExcelFiles/inventory.xlsx";
 
         File inventoryFile = new File(filePath);
         if (inventoryFile.exists()) {
@@ -70,7 +70,10 @@ public class ProductService {
         productSerialNumberCell.setCellValue(product.getProductSerialNumber());
 
         Cell productWarrantyRegistrationDateCell = row.createCell(columnCount);
-        productWarrantyRegistrationDateCell.setCellValue(product.getWarrantyRegistrationDate().toString());
+        if (product.getWarrantyRegistrationDate().isEmpty()) {
+            product.setWarrantyRegistrationDate();
+        }
+        productWarrantyRegistrationDateCell.setCellValue(product.getWarrantyRegistrationDate());
 
 
         try (FileOutputStream fileOutputStream = new FileOutputStream(filePath)) {

@@ -12,7 +12,7 @@ public class Product {
     private String productSerialNumber;
     private String productName;
     private Double productPrice;
-    private LocalDate warrantyRegistrationDate;
+    private String warrantyRegistrationDate;
 
     public String getProductName() {
         return productName;
@@ -38,15 +38,15 @@ public class Product {
         this.productPrice = productPrice;
     }
 
-    public LocalDate getWarrantyRegistrationDate() {
+    public String getWarrantyRegistrationDate() {
         return warrantyRegistrationDate;
     }
 
     public void setWarrantyRegistrationDate() {
-        this.warrantyRegistrationDate = LocalDate.now();
+        this.warrantyRegistrationDate = LocalDate.now().toString();
     }
 
-    public void setWarrantyRegistrationDate(LocalDate warrantyRegistrationDate) {
+    public void setWarrantyRegistrationDate(String warrantyRegistrationDate) {
         this.warrantyRegistrationDate = warrantyRegistrationDate;
     }
 
